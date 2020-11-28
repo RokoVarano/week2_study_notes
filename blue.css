@@ -1,0 +1,32 @@
+.scss-grid2 {
+  display: grid;
+  grid-template: 1fr 1fr/repeat(2, 1fr);
+  grid-template-areas: "a b" "c d";
+  width: 500px;
+  height: 500px;
+}
+.scss-grid2 div {
+  min-height: 100%;
+}
+.scss-grid2 .r-top {
+  background: #99D6F9;
+  grid-area: a;
+}
+.scss-grid2 .r-top button {
+  background: aquamarine;
+  padding: 5px;
+}
+.scss-grid2 .r-bot {
+  background: #99D6F9;
+  grid-area: d;
+}
+.scss-grid2 .b-top {
+  background: #034E79;
+  grid-area: b;
+}
+.scss-grid2 .b-bot {
+  background: #034E79;
+  grid-area: c;
+}
+
+/*# sourceMappingURL=blue.css.map */

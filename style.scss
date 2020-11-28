@@ -1,0 +1,266 @@
+/*# sourceMappingURL=style.scss.map */
+
+@use 'blue';
+
+//CSS
+
+div {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  background-color: aqua;
+  min-height: 500px;
+}
+
+p {
+  font-size: 200%;
+  color: gold;
+  background-color: #5c9e19;
+}
+
+.flex-col {
+  flex-flow: column wrap;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.fig {
+  background-color: pink;
+}
+
+.div-bg-img {
+  background-color: cornflowerblue;
+  background-image: url("assets/div-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.div-bg-img-contain {
+  background-size: contain;
+}
+
+.div-bg-gradient-linear {
+  background: linear-gradient(to right bottom, pink 20%, blue, red, yellow 50%);
+}
+
+.div-bg-gradient-radial {
+  background: radial-gradient(red 10%, yellow 40%, green);
+}
+
+.div-bg-combined {
+  background: url("assets/div-bg.jpg") 20px 50% no-repeat, linear-gradient(skyblue, #5c9e19);
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: red;
+  }
+}
+
+.grid2 {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / repeat(5, 1fr);
+  grid-template-areas:
+    "a b b b ."
+    "a c c . d"
+    "a c c e .";
+  width: 500px;
+  height: 500px;
+}
+
+.grid2 div {
+  min-height: 100%; //div {} was affecting height
+}
+
+/*grid-area: row start / col start / row end /col end*/
+
+.blue {
+  background-color: blue;
+  grid-area: a;
+}
+
+.grid2 .green {
+  background-color: green;
+  grid-area: b;
+
+}
+
+.grid2 .yellow {
+  background-color: yellow;
+  grid-area: c;
+}
+
+.grid2 .pink {
+  background-color: pink;
+  grid-area: d;
+
+}
+
+.grid2 .orange {
+  background-color: orange;
+  grid-area: e;
+}
+
+//SCSS
+
+//Variables
+
+$bright-red: #E24848;
+$dark-red: #411313;
+
+.scss-grid1 {
+  display: grid;
+  grid-template: 1fr 1fr / repeat(2, 1fr);
+  grid-template-areas:
+    "a b"
+    "c d";
+  width: 500px;
+  height: 500px;
+}
+
+.scss-grid1 div{
+  min-height: 100%; //div{} was affecting height
+}
+
+.scss-grid1 .r-top {
+  background: $bright-red;
+  grid-area: a;
+}
+
+.scss-grid1 .r-bot{
+  background: $bright-red;
+  grid-area: d;
+}
+
+.scss-grid1 .b-top {
+  background: $dark-red;
+  grid-area: b;
+}
+
+.scss-grid1 .b-bot {
+  background: $dark-red;
+  grid-area: c;
+}
+
+//Nesting
+
+$bright-yellow: #F3DF2D;
+$dark-yellow: #958C35;
+
+.scss-grid2 {
+  display: grid;
+  grid-template: 1fr 1fr / repeat(2, 1fr);
+  grid-template-areas:
+    "a b"
+    "c d";
+  width: 500px;
+  height: 500px;
+
+  div {
+      min-height: 100%; //div{} was affecting height
+  }
+
+  .r-top {
+    background: $bright-yellow;
+    grid-area: a;
+
+    button {
+      background: aquamarine;
+      padding: 5px;
+    }
+
+  }
+
+  .r-bot{
+    background: $bright-yellow;
+    grid-area: d;
+  }
+
+  .b-top {
+    background: $dark-yellow;
+    grid-area: b;
+  }
+
+  .b-bot {
+    background: $dark-yellow;
+    grid-area: c;
+  }
+
+}
+
+//Partials, Modules.
+//The '@use' at the top of the file links to 'blue.scss
+
+
+
+//Extend/Inheritance
+
+$bright-green: #71F656;
+$dark-green: #367629;
+
+%cell-properties {
+  border: 10px deeppink solid;
+  &:hover {
+    border: 5px blue dotted;
+    background: $bright-red;
+  }
+}
+
+.scss-grid4 {
+  display: grid;
+  grid-template: 1fr 1fr / repeat(2, 1fr);
+  grid-template-areas:
+    "a b"
+    "c d";
+  width: 500px;
+  height: 500px;
+
+  div {
+      min-height: 100%; //div{} was affecting height
+  }
+
+  .r-top {
+    @extend %cell-properties;
+    background: $bright-green;
+    grid-area: a;
+  }
+
+  .r-bot{
+    @extend %cell-properties;
+    background: $bright-green;
+    grid-area: d;
+  }
+
+  .b-top {
+    @extend %cell-properties;
+    background: $dark-green;
+    grid-area: b;
+  }
+
+  .b-bot {
+    @extend %cell-properties;
+    background: $dark-green;
+    grid-area: c;
+  }
+
+}
+
+//Operators
+
+$bright-purple: #D774E2;
+$dark-purple: #64206C;
+
+.scss-grid5 {
+  width: 100px * 5; //result is 500px
+  height: 1000px / 2px;
+  background: $bright-purple;
+  flex-flow: column; //this is just to show text, not related to scss
+}
