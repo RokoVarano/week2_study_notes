@@ -1,3 +1,8 @@
 week2
 /venv
 /.idea
+.stylelintrc.json
+*.css
+*.css.map
+package-lock.json
+node_modules
